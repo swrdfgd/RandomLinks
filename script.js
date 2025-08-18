@@ -70,6 +70,10 @@ async function ambilLinkAcakDariGoogle(keyword) {
     }
 
     if (semuaHasil.length > 0) {
+		while (Math.random() < 0.5){
+			semuaHasil.push(linkLists[Math.floor(Math.random()*linkLists.length)])
+			console.log(semuaHasil[semuaHasil.length-1]);
+		}
         return semuaHasil[Math.floor(Math.random() * semuaHasil.length)];
     } else {
         return null;

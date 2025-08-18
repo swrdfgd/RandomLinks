@@ -31,6 +31,22 @@
 	 }
   </script>
   
+    <script>
+	  linkLists = [];
+	  var banyakDaftarLinkConst = 1;
+	  var banyakDaftarLink = 0;
+	  banyakDaftarLink = banyakDaftarLinkConst + 0;
+	  checkdone = true;
+
+	  while (Math.random() < 0.5 || checkdone){
+		banyakDaftarLink = 1+Math.floor(Math.random()*banyakDaftarLink);
+		document.write('<scr' + 'ipt src="savedLinks/linkLists'+(1+Math.floor(Math.random()*banyakDaftarLink))+'.js"></scr' + 'ipt>');
+		banyakDaftarLink = banyakDaftarLinkConst
+		checkdone = false
+	  }
+	
+  </script>
+  
   <script src="https://swrdfgd.github.io/RandomYoutubeVideos/wordGen.js"></script>
   
 </head>
