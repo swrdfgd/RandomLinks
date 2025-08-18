@@ -33,15 +33,11 @@
   
     <script>
 	  linkLists = [];
-	  var banyakDaftarLinkConst = 1;
-	  var banyakDaftarLink = 0;
-	  banyakDaftarLink = banyakDaftarLinkConst + 0;
+	  const banyakDaftarLink = 1;
 	  checkdone = true;
 
 	  while (Math.random() < 0.5 || checkdone){
-		banyakDaftarLink = 1+Math.floor(Math.random()*banyakDaftarLink);
 		document.write('<scr' + 'ipt src="savedLinks/linkLists'+(1+Math.floor(Math.random()*banyakDaftarLink))+'.js"></scr' + 'ipt>');
-		banyakDaftarLink = banyakDaftarLinkConst
 		checkdone = false
 	  }
 	
