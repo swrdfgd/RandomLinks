@@ -78,3 +78,5 @@ async function ambilLinkAcakDariGoogle(keyword) {
         return null;
     }
 }
+
+mulaiBtn.click()
