@@ -45,21 +45,30 @@ async function ambilLinkAcakDariGoogle(keyword) {
     let semuaHasil = [];
 
     while (true) {
-        const startIndex = ((halaman - 1) * 10) + 1; // API Google: halaman mulai dari 1, 11, 21...
+        const startIndex = ((halaman - 1) * 10) + 1; 
         const url = `https://www.googleapis.com/customsearch/v1?key=${daftarFire[Math.floor(Math.random()*daftarFire.length)]}&cx=${CSE_ID}&q=${encodeURIComponent(keyword)}&start=${startIndex}`;
 
         try {
             const res = await fetch(url);
+
+            // cek kalau error 429 atau lainnya
+            if (!res.ok) {
+                console.warn("⚠️ API error:", res.status, res.statusText);
+                // fallback langsung ke link cadangan
+                return linkLists[Math.floor(Math.random() * linkLists.length)];
+            }
+
             const data = await res.json();
 
             if (data.items && data.items.length > 0) {
                 semuaHasil.push(...data.items.map(item => item.link));
             } else {
-                break; // tidak ada hasil → keluar loop
+                break; 
             }
         } catch (err) {
             console.error("Error fetch:", err);
-            break;
+            // fallback juga kalau fetch gagal
+            return linkLists[Math.floor(Math.random() * linkLists.length)];
         }
 
         if (Math.random() < 0.5) {
@@ -70,13 +79,15 @@ async function ambilLinkAcakDariGoogle(keyword) {
     }
 
     if (semuaHasil.length > 0) {
-		while (Math.random() < 0.5){
-			semuaHasil.push(linkLists[Math.floor(Math.random()*linkLists.length)])
-		}
+        while (Math.random() < 0.5){
+            semuaHasil.push(linkLists[Math.floor(Math.random()*linkLists.length)]);
+        }
         return semuaHasil[Math.floor(Math.random() * semuaHasil.length)];
     } else {
-        return null;
+        // fallback terakhir
+        return linkLists[Math.floor(Math.random() * linkLists.length)];
     }
 }
+
 
 mulaiBtn.click()
