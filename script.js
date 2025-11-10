@@ -16,7 +16,7 @@ document.getElementById("mulaiBtn").addEventListener("click", async () => {
         }
     }
 
-    hasilContainer.innerHTML = semuaLink.map(url => `<p><a href="${url}" target="_blank">${url}</a></p>`).join("");
+    hasilContainer.innerHTML = semuaLink.map((url, index) => `<p> ${index+1}. <a href="${url}" target="_blank">${url}</a></p>`).join("");
 });
 
 // Fungsi placeholder untuk generate kata kunci acak
